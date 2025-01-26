@@ -1,0 +1,292 @@
+/* Modern CSS reset and base styles */
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #4f46e5;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --border-radius: 12px;
+  --transition: all 0.2s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header styles */
+.bridge-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.bridge-header h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Wallet connection section */
+.wallet-connections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.wallet-card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.wallet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Button styles */
+.wallet-button,
+.bridge-button,
+.faucet-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.wallet-button:hover:not(:disabled),
+.bridge-button:hover:not(:disabled),
+.faucet-button:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+}
+
+.wallet-button.connected {
+  background-color: var(--success-color);
+}
+
+.wallet-button:disabled,
+.bridge-button:disabled,
+.faucet-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Bridge controls section */
+.bridge-controls {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bridge-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Balance information */
+.balance-info {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Error message styles continued */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-left: 4px solid var(--error-color);
+  animation: slideIn 0.3s ease;
+}
+
+/* Animation keyframes for smooth transitions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading states and indicators */
+.loading-indicator {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Status indicators for transactions */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-badge.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: var(--success-color);
+}
+
+.status-badge.pending {
+  background-color: rgba(234, 179, 8, 0.1);
+  color: #ca8a04;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .bridge-header h1 {
+    font-size: 2rem;
+  }
+
+  .wallet-connections {
+    grid-template-columns: 1fr;
+  }
+
+  .bridge-controls {
+    padding: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 16px; /* Prevents zoom on mobile devices */
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for better keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #0f172a;
+    --card-background: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --border-color: #334155;
+  }
+
+  .wallet-card,
+  .bridge-controls {
+    border: 1px solid var(--border-color);
+  }
+
+  .form-group input,
+  .form-group select {
+    background-color: #334155;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+}
+
+/* Helper classes */
+.text-gradient {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

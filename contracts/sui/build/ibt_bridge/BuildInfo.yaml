@@ -1,0 +1,31 @@
+---
+compiled_package_info:
+  package_name: ibt_bridge
+  address_alias_instantiation:
+    ibt_bridge: "0000000000000000000000000000000000000000000000000000000000000000"
+    std: "0000000000000000000000000000000000000000000000000000000000000001"
+    sui: "0000000000000000000000000000000000000000000000000000000000000002"
+  source_digest: D02F9EE9C1306C5FA7F8044E1A2060A3E53B8404D609B3164BD2B163F23C827C
+  build_flags:
+    dev_mode: false
+    test_mode: false
+    generate_docs: false
+    save_disassembly: false
+    install_dir: ~
+    force_recompilation: false
+    lock_file: "./Move.lock"
+    fetch_deps_only: false
+    skip_fetch_latest_git_deps: false
+    default_flavor: sui
+    default_edition: ~
+    deps_as_root: false
+    silence_warnings: false
+    warnings_are_errors: false
+    json_errors: false
+    additional_named_addresses: {}
+    lint_flag:
+      no_lint: false
+      lint: false
+dependencies:
+  - MoveStdlib
+  - Sui
